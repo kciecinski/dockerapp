@@ -1,0 +1,19 @@
+version: '3'
+services:
+  dockerapp:
+    build: .
+    ports:
+      - "5000"
+    depends_on: 
+      - redis
+    networks:
+      - my-network
+
+  redis:
+    image: redis:latest
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
